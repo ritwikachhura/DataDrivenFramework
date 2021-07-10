@@ -17,6 +17,9 @@ public class SignInTest extends BaseTest{
             String error=signInPageActions.getErrorPromptMsg(driver);
             Assert.assertEquals(error,expected,"expected error msg is:"+expected+"but actual message is"+error);
         } catch (Exception e) {
+            System.out.println("inside exception" + e);
+            String myAccoutPageHeading=signInPageActions.getMyAccountPageHeading(driver);
+            Assert.assertEquals(myAccoutPageHeading,expected,"did not redirect on login");
             e.printStackTrace();
         }
 

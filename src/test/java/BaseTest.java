@@ -16,7 +16,7 @@ public class BaseTest {
     public void setup(){
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
-        driver = new ChromeDriver();
+
 
         driver.get("http://automationpractice.com/index.php?controller=authentication&back=my-account");
         driver.manage().timeouts().implicitlyWait(30,TimeUnit.SECONDS);
@@ -26,7 +26,7 @@ public class BaseTest {
 
     @AfterMethod
     public void closeBrowser(){
-
-        driver.quit();
+        System.out.println("inside quit");
+        driver.close();
     }
 }

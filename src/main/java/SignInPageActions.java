@@ -17,4 +17,7 @@ public class SignInPageActions extends  SignInPageObjects{
         System.out.println(actualErrorPrompt);
         return actualErrorPrompt;
     }
+    public String getMyAccountPageHeading(WebDriver driver){
+        return driver.findElement(myAccountBoxObj).getText();
+    }
 }

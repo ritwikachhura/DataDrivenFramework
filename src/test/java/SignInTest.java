@@ -5,24 +5,27 @@ import org.testng.annotations.Test;
 public class SignInTest extends BaseTest {
 
     SignInPageActions signInPageActions = new SignInPageActions();
+    String actualSignInPromptErrorMessage, myAccoutPageHeading;
 
-    @Test(dataProvider = "testdata")
-    public void signIn(String email, String password, String expected) {
+    @Test(dataProvider = "signindata")
+    public void signIn(String signInEmail, String signInPassword, String expectedSignInValue) {
 
-        signInPageActions.fillSignInForm(driver, email, password);
+        signInPageActions.fillSignInForm(driver, signInEmail, signInPassword);
         signInPageActions.clickSignInButton(driver);
 
         try {
-            String error = signInPageActions.getErrorPromptMsg(driver);
-            Assert.assertEquals(error, expected, "Expected error msg is: " + expected + ". But actual message is: " + error);
+            actualSignInPromptErrorMessage = signInPageActions.getSignInErrorPromptMessage(driver);
+            Assert.assertEquals(actualSignInPromptErrorMessage, expectedSignInValue, "Expected Sign In error message is: " + expectedSignInValue +
+                    ". But actual Sign In error message is: " + actualSignInPromptErrorMessage);
         } catch (Exception e) {
-            String myAccoutPageHeading = signInPageActions.getMyAccountPageHeading(driver);
-            Assert.assertEquals(myAccoutPageHeading, expected, "Login Unsucessful. Cannot redirect to My Account.");
+            actualMyAccoutPageHeading = signInPageActions.getMyAccountPageHeading(driver);
+            Assert.assertEquals(actualMyAccoutPageHeading, expectedSignInValue, "Expected My account page heading: " + expectedSignInValue +
+                    ". But received: " + actualMyAccoutPageHeading);
         }
     }
 
-    @DataProvider(name = "testdata")
-    public Object[][] testDataExample() {
+    @DataProvider(name = "signindata")
+    public Object[][] signInTestData() {
 
         ReadExcelFile readExcelFile = new ReadExcelFile("UserCredentials_demo.xlsx");
         int rows = readExcelFile.getRowCount(0);

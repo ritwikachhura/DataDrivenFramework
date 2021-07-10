@@ -6,22 +6,27 @@ public class SignInPageActions extends SignInPageObjects {
 
     public void fillSignInForm(WebDriver driver, String email, String password) {
 
-        driver.findElement(emailBoxObj).sendKeys(email);
-        driver.findElement(pswdBoxObj).sendKeys(password);
+        driver.findElement(emailBoxSignInObj).sendKeys(email);
+        driver.findElement(passwordBoxSignInObj).sendKeys(password);
     }
 
     public void clickSignInButton(WebDriver driver) {
 
-        driver.findElement(signinbuttonBoxObj).click();
+        driver.findElement(signInButtonObj).click();
     }
 
-    public String getErrorPromptMsg(WebDriver driver) {
+    public String getSignInErrorPromptMessage(WebDriver driver) {
 
-        return driver.findElement(errorComponentBoxObj).getText();
+        return driver.findElement(signInErrorComponentBoxObj).getText();
     }
 
     public String getMyAccountPageHeading(WebDriver driver) {
 
-        return driver.findElement(myAccountBoxObj).getText();
+        return driver.findElement(myAccountPageHeadingObj).getText();
+    }
+
+    public String getLoginPageTitle(Webdriver driver) {
+
+        return driver.getTitle();
     }
 }

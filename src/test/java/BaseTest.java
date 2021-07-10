@@ -13,16 +13,23 @@ import java.util.concurrent.TimeUnit;
 public class BaseTest {
 
     public static RemoteWebDriver driver;
+    SignInPageActions signInPageActions = new SignInPageActions();
 
     @BeforeMethod
     public void setup() {
 
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
+        int implicitWaitTime = 30;
+        String actualSignInPageTitle;
+        String websiteUrl = "http://automationpractice.com/index.php?controller=authentication&back=my-account";
+        String expectedSignInPageTitle = "Login - My Store";
 
-        driver.get("http://automationpractice.com/index.php?controller=authentication&back=my-account");
-        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-        Assert.assertEquals(driver.getTitle(), "Login - My Store");
+        driver.get(websiteUrl);
+        driver.manage().timeouts().implicitlyWait(implicitWaitTime, TimeUnit.SECONDS);
+        actualSignInPageTitle = signInPageActions.getLoginPageTitle();
+        Assert.assertEquals(actualSignInPageTitle, expectedSignInPageTitle, "Expected Sign In page title is: " + expectedSignInPageTitle +
+                ". But actual Sign In page title is: " + actualSignInPageTitle);
         driver.manage().window().maximize();
     }
 

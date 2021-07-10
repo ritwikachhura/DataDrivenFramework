@@ -20,11 +20,13 @@ public class CreateExcel {
 
         //This data needs to be written (Object[])
         Map<String, Object[]> data = new TreeMap<String, Object[]>();
-        data.put("1", new Object[]{"ThoughtworksUser@gmail.com", "CorrectP@ssw0rd"});   //Correct_username__Correct_password
-        data.put("2", new Object[]{"ThoughtworksUser@gmail.com", "IncorrectPassword"}); //Correct_username__Incorrect_password
-        data.put("3", new Object[]{"ThoughtworksUser@.com", "CorrectP@ssw0rd"});    //Incorrect_username__Correct_password
-        data.put("4", new Object[]{"ThoughtworksUser@gmail.", "IncorrectPassword"});  //Incorrect_username__Incorrect_password
-        data.put("5", new Object[]{"NewUser@gmail.com", "AnytPassword"});   //Non_existent_user
+        data.put("1", new Object[]{"ThoughtworksUser@gmail.com", "CorrectP@ssw0rd","My account"});   //Correct_username__Correct_password
+        data.put("2", new Object[]{"ThoughtworksUser@gmail.com", "IncorrectPassword","Authentication failed."}); //Correct_username__Incorrect_password
+        data.put("3", new Object[]{"ThoughtworksUser@.com", "CorrectP@ssw0rd","Authentication failed."});    //Incorrect_username__Correct_password
+        data.put("4", new Object[]{"ThoughtworksUser@gmail.", "IncorrectPassword","Authentication failed."});  //Incorrect_username__Incorrect_password
+        data.put("5", new Object[]{"", "AnytPassword","An email address required."});   //Empty email-id
+        data.put("6", new Object[]{"ThoughtworksUser@gmail", "","Password is required."});   //Empty password
+        data.put("7", new Object[]{"", "","An email address required."});   //Empty email and email password
 
         //Iterate over data and write to sheet
         Set<String> keyset = data.keySet();

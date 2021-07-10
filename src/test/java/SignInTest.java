@@ -1,0 +1,30 @@
+import org.openqa.selenium.By;
+import org.testng.Assert;
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.Test;
+
+public class SignInTest extends BaseTest{
+
+    SignInPageActions signInPageActions = new SignInPageActions();
+    @Test(dataProvider = "testdata" )
+    public void signIn(String email,String password){
+
+        signInPageActions.fillSignInForm(driver,email,password);
+        signInPageActions.clickSignInButton(driver);
+
+    }
+
+    @DataProvider(name = "testdata")
+    public Object[][] testDataExample(){
+        ReadExcelFile readExcelFile = new ReadExcelFile("UserCredentials_demo.xlsx");
+        int rows = readExcelFile.getRowCount(0);
+        Object[][]signin_credentials = new Object[rows][2];
+
+        for(int i=0;i<rows;i++)
+        {
+            signin_credentials[i][0] = readExcelFile.getData(0, i, 0);
+            signin_credentials[i][1] = readExcelFile.getData(0, i, 1);
+        }
+        return signin_credentials;
+    }
+       }

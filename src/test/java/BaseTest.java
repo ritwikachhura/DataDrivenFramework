@@ -27,7 +27,7 @@ public class BaseTest {
 
         driver.get(websiteUrl);
         driver.manage().timeouts().implicitlyWait(implicitWaitTime, TimeUnit.SECONDS);
-        actualSignInPageTitle = signInPageActions.getLoginPageTitle();
+        actualSignInPageTitle = driver.getTitle();
         Assert.assertEquals(actualSignInPageTitle, expectedSignInPageTitle, "Expected Sign In page title is: " + expectedSignInPageTitle +
                 ". But actual Sign In page title is: " + actualSignInPageTitle);
         driver.manage().window().maximize();
@@ -37,5 +37,6 @@ public class BaseTest {
     public void closeBrowser() {
 
         driver.close();
+        System.out.println("*******");
     }
 }

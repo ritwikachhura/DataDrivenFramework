@@ -25,8 +25,8 @@ public class SignInPageActions extends SignInPageObjects {
         return driver.findElement(myAccountPageHeadingObj).getText();
     }
 
-    public String getLoginPageTitle(Webdriver driver) {
+    /*public String getSignInPageTitle(Webdriver driver) {
 
         return driver.getTitle();
-    }
+    }*/
 }

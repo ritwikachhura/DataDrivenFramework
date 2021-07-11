@@ -1,3 +1,5 @@
+package com.dataDriven.excelSheet;
+
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
@@ -48,7 +50,7 @@ public class CreateExcel {
 
         try {
             //Write the workbook in file system
-            FileOutputStream out = new FileOutputStream(new File("UserCredentials_demo.xlsx"));
+            FileOutputStream out = new FileOutputStream(new File("Test-data/UserCredentials_demo.xlsx"));
 
             workbook.write(out);
             out.close();

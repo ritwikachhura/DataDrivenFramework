@@ -1,6 +1,7 @@
-import org.openqa.selenium.By;
+package com.dataDriven.pageActions;
+
+import com.dataDriven.pageObjects.SignInPageObjects;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.remote.RemoteWebDriver;
 
 public class SignInPageActions extends SignInPageObjects {
 

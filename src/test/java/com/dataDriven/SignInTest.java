@@ -1,3 +1,8 @@
+package com.dataDriven;
+
+import com.dataDriven.setUp.BaseTest;
+import com.dataDriven.excelSheet.ReadExcelFile;
+import com.dataDriven.pageActions.SignInPageActions;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -9,7 +14,7 @@ public class SignInTest extends BaseTest {
 
     @Test(dataProvider = "signindata")
     public void signIn(String signInEmail, String signInPassword, String expectedSignInValue, String executeTestcase) {
-
+        //execute test for data row with 'true' criteria
         if(executeTestcase == "T") {
             signInPageActions.fillSignInForm(driver, signInEmail, signInPassword);
             signInPageActions.clickSignInButton(driver);
@@ -29,9 +34,9 @@ public class SignInTest extends BaseTest {
     @DataProvider(name = "signindata")
     public Object[][] signInTestData() {
 
-        ReadExcelFile readExcelFile = new ReadExcelFile("UserCredentials_demo.xlsx");
+        ReadExcelFile readExcelFile = new ReadExcelFile("Test-data/UserCredentials_demo.xlsx");
         int rows = readExcelFile.getRowCount(0);
-        Object[][] signin_credentials = new Object[rows][5];
+        Object[][] signin_credentials = new Object[rows][4];
 
         for (int i = 0; i < rows; i++) {
             signin_credentials[i][0] = readExcelFile.getData(0, i, 0);
